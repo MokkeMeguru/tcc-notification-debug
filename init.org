@@ -1,0 +1,2 @@
+yarn create react-app todo-example --typescript
+cd todo-example
