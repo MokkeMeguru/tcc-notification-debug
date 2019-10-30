@@ -9,6 +9,8 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
+import { vapid_public } from './pubkey'
+import { urlB64ToUint8Array } from "./subscription"
 
 const isLocalhost = Boolean(
     window.location.hostname === 'localhost' ||
@@ -41,7 +43,8 @@ export function register(config?: Config) {
             return;
         }
         window.addEventListener('load', () => {
-            const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+            const swUrl = `${process.env.PUBLIC_URL}/sw.js`;
+            // const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
             if (isLocalhost) {
                 // This is running on localhost. Let's check if a service worker still exists or not.
                 checkValidServiceWorker(swUrl, config);
@@ -65,6 +68,14 @@ function registerValidSW(swUrl: string, config?: Config) {
     navigator.serviceWorker
         .register(swUrl)
         .then(registration => {
+            registration.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: urlB64ToUint8Array(vapid_public)
+            }).then(
+                subscription => {
+                    console.log('Subscription OK:', subscription)
+                }
+            )
             registration.onupdatefound = () => {
                 const installingWorker = registration.installing;
                 if (installingWorker == null) {
