@@ -11,6 +11,7 @@
 // opt-in, read https://bit.ly/CRA-PWA
 import { vapid_public } from './pubkey'
 import { urlB64ToUint8Array } from "./subscription"
+import { default_username } from './pubkey'
 
 const isLocalhost = Boolean(
     window.location.hostname === 'localhost' ||
@@ -74,6 +75,7 @@ function registerValidSW(swUrl: string, config?: Config) {
             }).then(
                 subscription => {
                     console.log('Subscription OK:', subscription)
+                    console.log('subscription [json]', subscription.toJSON())
                 }
             )
             registration.onupdatefound = () => {

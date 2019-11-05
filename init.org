@@ -1,2 +1,28 @@
+
+
+* usage
+まず yarn でプロジェクトを立ち上げます。
+  #+begin_src shell
+yarn start
+  #+end_src
+
+次にブラウザで開きます。
+
+Chromeの場合、 ~localhost:<port>~ のサイトの設定 (URLの左側アイコン) から、ポップアップを有効にしてください。
+
+ポップアップを有効化するかどうかの選択肢が出てくるため、これを許可してください。
+
+そして 開発者モードに入り、 Console をると、 PushSubscription が表示されています。
+
+ endpoint, keys->auth, keys->p256dh  をメモしてください。
+
+この3つのキーを用いて、サーバサイドはクライアントへメッセージを送信することが出来ます。
+なお、サーバは事前に設定した、 ~src/pubkey.ts~ を VAPID の public key として持っている必要が有ります。
+* TODO
+  プッシュ通知を送るサーバと、アプリケーションサーバの分離が可能かどうかの検証実験
+
+* メモ
+#+begin_src shell
 yarn create react-app todo-example --typescript
 cd todo-example
+#+end_src
