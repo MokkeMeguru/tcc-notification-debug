@@ -1,9 +1,7 @@
-
-
 * usage
 まず yarn でプロジェクトを立ち上げます。
   #+begin_src shell
-yarn start
+    docker-compose  run --service-ports --rm notification_cli
   #+end_src
 
 次にブラウザで開きます。

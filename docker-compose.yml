@@ -1,0 +1,17 @@
+version: '3'
+services:
+  notification_cli:
+    image: "node"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=develop
+    volumes:
+     - .:/home/node/app
+     - node_libs:/home/node/.node_modules
+    ports:
+      - 3000:3000
+    command: yarn start
+
+volumes:
+  node_libs:
