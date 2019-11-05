@@ -26,3 +26,16 @@ Chromeの場合、 ~localhost:<port>~ のサイトの設定 (URLの左側アイ�
 yarn create react-app todo-example --typescript
 cd todo-example
 #+end_src
+
+* 主な技術点
+  
+** serviceWorker の有効化
+
+   #+CAPTION: index.tsx
+   #+begin_src typescript
+serviceWorker.register();
+   #+end_src
+
+** serviceWorker.tsx の書き換え
+   ref. https://qiita.com/kentac55/items/bbb59a9ecf974713eca5
+
